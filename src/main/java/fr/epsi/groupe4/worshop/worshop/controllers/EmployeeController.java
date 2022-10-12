@@ -32,21 +32,21 @@ public class EmployeeController {
         return "employee ajouter avec succes";
     }
 
-    @PutMapping("/update")
+    @PutMapping("/{id_employee}/update")
     public String updateEmployee(@Validated @PathVariable int id_employee, @RequestBody Employee employee)
     {
         employeeService.updateEmployee(id_employee, employee);
         return "mise à jour employee effectuer avec succes";
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/{id_employee}/delete")
     public String removeEmployee(@Validated @PathVariable int id_employee)
     {
         employeeService.removeEmployee(id_employee);
         return  "employee supprimer avec success";
     }
 
-    @GetMapping("/searchById")
+    @GetMapping("/{id_employee}/searchById")
     public Employee searchByIdEmployee(@Validated @PathVariable int id_employee)
     {
         return employeeService.searchByIdEmployee(id_employee);

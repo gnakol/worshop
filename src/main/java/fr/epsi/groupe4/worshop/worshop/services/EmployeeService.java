@@ -11,7 +11,7 @@ import java.util.List;
 public class EmployeeService {
 
     @Autowired
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
     public EmployeeService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
@@ -29,6 +29,7 @@ public class EmployeeService {
 
     public Employee updateEmployee(int id_employe, Employee employee)
     {
+
         return employeeRepository.findById(id_employe)
                 .map(p->{
                     p.setNom(employee.getNom());
@@ -36,6 +37,9 @@ public class EmployeeService {
                     p.setSexe(employee.getSexe());
                     return employeeRepository.save(p);
                 }).orElseThrow(() -> new RuntimeException("employee non trouver"));
+
+
+
     }
 
     public void removeEmployee(int id_employee)

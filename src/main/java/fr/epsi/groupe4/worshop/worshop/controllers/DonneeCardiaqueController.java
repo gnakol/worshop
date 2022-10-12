@@ -33,14 +33,14 @@ public class DonneeCardiaqueController {
     }
 
     @PutMapping("/{id_donnee}/update")
-    public String updateDonnee(@Validated @PathVariable int id_donnee, DonneeCardique donneeCardique)
+    public String updateDonnee(@Validated @PathVariable int id_donnee, @RequestBody DonneeCardique donneeCardique)
     {
-        donneeCardique = donneeCardiaqueService.updateDonnee(id_donnee, donneeCardique);
+        donneeCardiaqueService.updateDonnee(id_donnee, donneeCardique);
 
         return "mise à jour donnee cardiaque avec sucess";
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id_donnee}/delete")
     public String removeDonnee(@Validated @PathVariable int id_donnee)
     {
         donneeCardiaqueService.removeDonnee(id_donnee);

@@ -33,6 +33,7 @@ public class DonneeCardiaqueService {
                 .map(p->{
                     p.setDate(donneeCardique.getDate());
                     p.setRythme_cardiaque(donneeCardique.getRythme_cardiaque());
+                    p.setNumero_serie_montre(donneeCardique.getNumero_serie_montre());
                     return donneeCardiaqueRepository.save(p);
                 }).orElseThrow(() -> new RuntimeException("desoler donner non trouver"));
     }
