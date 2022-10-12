@@ -1,5 +1,6 @@
 package fr.epsi.groupe4.worshop.worshop.beans;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -22,4 +23,9 @@ public class DonneeCardique {
 
     @Column(name = "NumeroSerieMontre")
     private String numero_serie_montre;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id_employee")
+    @JsonIgnoreProperties({"donneeCardiques"})
+    private Employee employee;
 }

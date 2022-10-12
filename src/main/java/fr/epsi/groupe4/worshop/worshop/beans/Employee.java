@@ -1,8 +1,11 @@
 package fr.epsi.groupe4.worshop.worshop.beans;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Generated;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -19,9 +22,10 @@ public class Employee {
     @Column(name = "Prenom")
     private String prenom;
 
-    @Column(name = "NumeroSerieMontre")
-    private String num_serie;
-
     @Column(name = "sexe")
     private String sexe;
+
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"employee"})
+    private List<DonneeCardique> donneeCardiques;
 }

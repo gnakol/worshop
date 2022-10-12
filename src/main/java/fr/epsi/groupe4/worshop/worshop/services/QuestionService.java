@@ -39,6 +39,14 @@ public class QuestionService {
 
     public void removeQuestion(int id_question)
     {
-        
+        Question question = this.questionRepository.findById(id_question).get();
+
+        if(question != null)
+            this.questionRepository.delete(question);
+    }
+
+    public Question searchByIdQuestion(int id_question)
+    {
+        return this.questionRepository.findById(id_question).get();
     }
 }
